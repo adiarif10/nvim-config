@@ -30,7 +30,12 @@ return {
     event = "InsertEnter",
     opts = {},
   },
-
+{
+  "nvim-treesitter/nvim-treesitter",
+  branch = "master",
+  lazy = false,
+  build = ":TSUpdate",
+},
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 

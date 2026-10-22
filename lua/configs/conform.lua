@@ -11,6 +11,7 @@ local options = {
     python = { "black" },
     c = { "clang_format" },
     cpp = { "clang_format" },
+    nix = { "nixfmt" },
   },
 
   formatters = {
