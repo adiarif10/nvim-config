@@ -30,12 +30,41 @@ return {
     event = "InsertEnter",
     opts = {},
   },
-{
-  "nvim-treesitter/nvim-treesitter",
-  branch = "master",
-  lazy = false,
-  build = ":TSUpdate",
-},
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter").install {
+        "lua",
+        "vim",
+        "vimdoc",
+        "bash",
+        "regex",
+        "javascript",
+        "typescript",
+        "tsx",
+        "json",
+        "html",
+        "css",
+        "python",
+        "c",
+        "cpp",
+        "nix",
+        "markdown",
+        "markdown_inline",
+      }
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
+    end,
+  },
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
